@@ -59,6 +59,9 @@ PRIVATE_MODELS = [
 # Being in this list is an exception and should **not** be the rule.
 IGNORE_NON_TESTED = PRIVATE_MODELS.copy() + [
     # models to ignore for not tested
+"ToasterEncoder",  # Building part of bigger (tested) model.
+    "ToasterDecoder",  # Building part of bigger (tested) model.
+    "ToasterDecoderWrapper", # Building part of bigger (tested) model.
     "InstructBlipQFormerModel",  # Building part of bigger (tested) model.
     "NllbMoeDecoder",
     "NllbMoeEncoder",
@@ -197,6 +200,9 @@ TEST_FILES_WITH_NO_COMMON_TESTS = [
 # should **not** be the rule.
 IGNORE_NON_AUTO_CONFIGURED = PRIVATE_MODELS.copy() + [
     # models to ignore for model xxx mapping
+"ToasterEncoder",
+    "ToasterDecoder",
+    "ToasterDecoderWrapper",
     "AlignTextModel",
     "AlignVisionModel",
     "ClapTextModel",

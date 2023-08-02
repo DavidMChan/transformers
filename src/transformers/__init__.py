@@ -123,6 +123,7 @@ _import_structure = {
     ],
     "models": [],
     # Models
+    "models.toaster": ["TOASTER_PRETRAINED_CONFIG_ARCHIVE_MAP", "ToasterConfig", "ToasterImageProcessor"],
     "models.albert": ["ALBERT_PRETRAINED_CONFIG_ARCHIVE_MAP", "AlbertConfig"],
     "models.align": [
         "ALIGN_PRETRAINED_CONFIG_ARCHIVE_MAP",
@@ -789,6 +790,7 @@ except OptionalDependencyNotAvailable:
     ]
 else:
     # Fast tokenizers structure
+    _import_structure["models.toaster"].append("ToasterTokenizerFast")
     _import_structure["models.albert"].append("AlbertTokenizerFast")
     _import_structure["models.bart"].append("BartTokenizerFast")
     _import_structure["models.barthez"].append("BarthezTokenizerFast")
@@ -1027,6 +1029,18 @@ else:
     _import_structure["modeling_utils"] = ["PreTrainedModel"]
 
     # PyTorch models structure
+
+    _import_structure["models.toaster"].extend(
+        [
+            "TOASTER_PRETRAINED_MODEL_ARCHIVE_LIST",
+            "ToasterForCausalLM",
+            "ToasterForConditionalGeneration",
+            "ToasterForQuestionAnswering",
+            "ToasterForSequenceClassification",
+            "ToasterModel",
+            "ToasterPreTrainedModel",
+        ]
+    )
     _import_structure["models.albert"].extend(
         [
             "ALBERT_PRETRAINED_MODEL_ARCHIVE_LIST",
@@ -4128,6 +4142,7 @@ if TYPE_CHECKING:
         load_tf2_weights_in_pytorch_model,
     )
     from .models.albert import ALBERT_PRETRAINED_CONFIG_ARCHIVE_MAP, AlbertConfig
+    from .models.toaster import TOASTER_PRETRAINED_CONFIG_ARCHIVE_MAP, ToasterConfig, ToasterTokenizer
     from .models.align import (
         ALIGN_PRETRAINED_CONFIG_ARCHIVE_MAP,
         AlignConfig,
@@ -4748,6 +4763,7 @@ if TYPE_CHECKING:
         from .utils.dummy_tokenizers_objects import *
     else:
         # Fast tokenizers imports
+        from .models.toaster import ToasterTokenizerFast
         from .models.albert import AlbertTokenizerFast
         from .models.bart import BartTokenizerFast
         from .models.barthez import BarthezTokenizerFast
@@ -4947,6 +4963,16 @@ if TYPE_CHECKING:
         from .modeling_utils import PreTrainedModel
 
         # PyTorch model imports
+
+        from .models.toaster import (
+            TOASTER_PRETRAINED_MODEL_ARCHIVE_LIST,
+            ToasterForConditionalGeneration,
+            ToasterForCausalLM,
+            ToasterForQuestionAnswering,
+            ToasterForSequenceClassification,
+            ToasterModel,
+            ToasterPreTrainedModel,
+        )
         from .models.albert import (
             ALBERT_PRETRAINED_MODEL_ARCHIVE_LIST,
             AlbertForMaskedLM,

@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from . import (
+    toaster,
     albert,
     align,
     altclip,
@@ -191,6 +192,7 @@ from . import (
     time_series_transformer,
     timesformer,
     timm_backbone,
+    toaster,
     transfo_xl,
     trocr,
     tvlt,
